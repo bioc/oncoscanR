@@ -7,18 +7,17 @@ version: 1.7.0 (bioconductor-devel)
 
 ## Description
 OncoscanR is an R package to handle Copy Number Variation analyses originating 
-from the Applied Biosystems:TM: OncoScan:TM: CNV Assay. It allows computation of 
-different homologous recombination deficiency (HRD) scores, including the nLST 
-score used by the Geneva HRD test [Christinat et al., JCO PO 2023], and the tandem 
-duplication plus score (TDplus) to identify CDK12-mutated tumors [Popova et al., 
-Cancer Res 2016]. 
+from the Applied Biosystems™️ OncoScan™️ CNV Assay. It allows computation of 
+different homologous recombination deficiency (HRD) scores[Telli 2016], including the nLST 
+score used by the Geneva HRD test[Christinat 2023], and the tandem 
+duplication plus score (TDplus) to identify CDK12-mutated tumors [Popova 2016]. 
 
 The package also allows for identification of arm-level alterations (e.g. gain 
 of chromosome arm 1p).
 
 **IMPORTANT**: The package expects as input the text exported file from ChAS 
-(Chromosome Analysis Suite; the Applied Biosystems:TM: software to identify CNV 
-segments from the OncoScan:TM: CNV Assay). The package assumes that all segments 
+(Chromosome Analysis Suite; the Applied Biosystems™️ software to identify CNV 
+segments from the OncoScan™️ CNV Assay). The package assumes that all segments 
 given in the file are correct and true. The ChAS text file has to contain the 
 columns `Type`, `CN State` and `Full Location` (to setup in ChAS). Any text file 
 that complies with this structure should work equally well.
@@ -30,26 +29,25 @@ The coverage on the p arm of chromosome 21 is only partial and is not included
 in this package.
 
 
-**Disclaimer**: The use of OncoScan:TM: platform in this research
+**Disclaimer**: The use of OncoScan™️ platform in this research
 does not imply an endorsement or recommendation of Thermo
 Fisher Scientific Inc. and its subsidiaries for the utilization of
-any specific algorithm or methodology with the OncoScan:TM:
+any specific algorithm or methodology with the OncoScan™️
 platform for HRD analysis. Thermo Fisher Scientific Inc. and
 its subsidiaries make no claims regarding the suitability,
 performance or efficacy of any algorithms or methodologies
-used in conjunction with the OncoScan platform for HRD
+used in conjunction with the OncoScan™️ platform for HRD
 analysis. Furthermore, Thermo Fisher Scientific Inc. and its
 subsidiaries take no responsibility, and anyone using any
 specific algorithms or methodologies in conjunction with the
-OncoScan:TM: platform for HRD analysis is solely responsible
+OncoScan™️ platform for HRD analysis is solely responsible
 for researching, identifying, and obtaining any necessary third-party
 rights and ensuring that such use is in compliance with
 applicable laws and regulations.
 
 ### Computation of arm-level alteration
 An arm is declared globally altered if more than 90% of its bases are altered with a similar CNV type (amplifications
-[5 copies or more], gains [1-2 extra copies], losses or copy-neutral losses of heterozygozity [LOH])[Christinat, 
-J Mol Diagn 2021; PMID: 34454110]. For
+[5 copies or more], gains [1-2 extra copies], losses or copy-neutral losses of heterozygozity [LOH])[Christinat 2021]. For
 instance, "gain of 3p" indicates that there is more than 90% of arm with 3 copies but less than 90% with 5 (otherwise
 it would be an amplification). Prior to computation, segments of same copy number and at a distance <300Kbp (Oncoscan
 resolution genome-wide) are merged. The remaining segments are filtered to a minimum size of 300Kbp.
@@ -70,7 +68,8 @@ for prediction of PARP inhibitors response.
 
 *How to cite*
 
-Christinat Y, Ho L, Clément S, et al. 2022-RA-567-ESGO The Geneva HRD test: clinical validation on 469 samples from the PAOLA-1 trial. International Journal of Gynecologic Cancer 2022;32:A238-A239.
+Yann Christinat et al., Normalized LST Is an Efficient Biomarker for Homologous Recombination Deficiency and Olaparib Response in Ovarian Carcinoma. *JCO Precis Oncol* 7, e2200555(2023).
+DOI:10.1200/PO.22.00555
 
 
 #### Score LST
@@ -175,13 +174,11 @@ The script will output a JSON string into the terminal with all the computed inf
 Please read the vignette for more details and the manual for a description of all available R functions.
 
 ## References
-1. "Homologous Recombination Deficiency (HRD) Score Predicts Response to Platinum-Containing Neoadjuvant Chemotherapy in Patients with Triple-Negative Breast Cancer.", M. Telli et al., Clin Cancer Res volume 22(15), august 2016.
-2. "Ovarian Cancers Harboring Inactivating Mutations in CDK12 Display a Distinct Genomic Instability Pattern
-Characterized by Large Tandem Duplications.", T. Popova et al., Cancer Res volume 76(7), april 2016.
-3. "Ploidy and large-scale genomic instability consistently identify basal-like breast carcinomas with BRCA1/2
-inactivation.", T. Popova et al., Cancer Res volume 72(21), november 2012.
-4. "Patterns of genomic loss of heterozygosity predict homologous recombination repair defects in epithelial ovarian cancer.", V. Abkevich et al., Br J Cancer. 2012 Nov 6;107(10).
-5. "Absolute quantification of somatic DNA alterations in human cancer", S. Carter et al., Nat Biotech, 2012 volume 30(5).
-6. "Automated Detection of Arm-Level Alterations for Individual Cancer Patients in the Clinical Setting", Y Christinat et al., J Mol Diagn 2021, Dec;23(17):1722-1731.
-7. "Normalized LST Is an Efficient Biomarker for Homologous Recombination Deficiency and Olaparib Response in Ovarian Carcinoma", Y Christinat et al., JCO Precision Oncology, volume 7, 2023.
+- Abkevich et al., Patterns of genomic loss of heterozygosity predict homologous recombination repair defects in epithelial ovarian cancer, Br J Cancer, 107(10), 2012.
+- Carter et al., Absolute quantification of somatic DNA alterations in human cancer, Nat Biotech, volume 30(5), 2012.
+- Christinat et al., Automated Detection of Arm-Level Alterations for Individual Cancer Patients in the Clinical Setting, J Mol Diagn, 23(17):1722-1731, 2021.
+- Christinat et al., Normalized LST Is an Efficient Biomarker for Homologous Recombination Deficiency and Olaparib Response in Ovarian Carcinoma, JCO Precision Oncology, volume 7, 2023.
+- Popova et al., Ploidy and large-scale genomic instability consistently identify basal-like breast carcinomas with BRCA1/2 inactivation, Cancer Res volume 72(21), 2012.
+- Popova et al., Ovarian Cancers Harboring Inactivating Mutations in CDK12 Display a Distinct Genomic Instability Pattern Characterized by Large Tandem Duplications, Cancer Res volume 76(7), 2016.
+- Telli et al., Homologous Recombination Deficiency (HRD) Score Predicts Response to Platinum-Containing Neoadjuvant Chemotherapy in Patients with Triple-Negative Breast Cancer, Clin Cancer Res volume 22(15), 2016.
 
