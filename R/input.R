@@ -584,10 +584,12 @@ adjust_loh <- function(segments) {
     })
 
     new.loh <- do.call("c", unlist(loh.adj))
-    new.loh$cn <- as.numeric(NA)
-    new.loh$cn.type <- as.character(cntypes$LOH)
-    if (!is.null(segments$cn.subtype)) {
-        new.loh$cn.subtype <- as.character(cntypes$LOH)
+    if (length(new.loh) == 0) {
+        new.loh$cn <- as.numeric(NA)
+        new.loh$cn.type <- as.character(cntypes$LOH)
+        if (!is.null(segments$cn.subtype)) {
+            new.loh$cn.subtype <- as.character(cntypes$LOH)
+        }
     }
 
     return(c(segments[segments$cn.type != cntypes$LOH], new.loh))
