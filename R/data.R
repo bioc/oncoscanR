@@ -18,7 +18,7 @@
 #' Expected segments from loading the ChAS file 'chas_example.txt'.
 #'
 #' @source
-#' segs.filename <- system.file('extdata', 'chas_example.txt', 
+#' segs.filename <- system.file('extdata', 'chas_example.txt',
 #' package = 'oncoscanR')
 #' mykit.cov <- get_oncoscan_coverage_from_probes()
 #' segs.chas_example <- load_chas(segs.filename, kit.coverage = mykit.cov)
@@ -34,9 +34,10 @@
 #'   - 'Heterozygote loss': Loss of one copy out of two
 #'   - 'Homozygote loss': Loss of all copies
 #'   - 'LOH': copy-neutral loss of one parental allele
+#'
 #' @source
 #' cntypes <- list(LOH='LOH', Gain='Gain', Loss='Loss')
 #'
-#' @noRd
+#' @format A list of strings containing all CN types
 "cntypes"
 

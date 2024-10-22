@@ -1,7 +1,7 @@
 Package: oncoscanR
 Type: Package
 Title: Secondary analyses of CNV data (HRD and more)
-Version: 1.7.1
+Version: 1.7.2
 Authors@R: c(person("Yann", "Christinat", email = "yann.christinat@hcuge.ch", 
                   role = c("aut", "cre")),
              person("Geneva University Hospitals", role=c("aut", "cph")))
@@ -24,7 +24,7 @@ Imports:
   	S4Vectors,
   	methods,
   	utils
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.2
 Depends:
     R (>= 4.2),
     IRanges (>= 2.30.0),
