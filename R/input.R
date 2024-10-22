@@ -87,7 +87,7 @@ load_chas <- function(filename, kit.coverage) {
 #'
 #' @details The ASCAT file is expected to have the following column names:
 #' 'chr' (chromosome number), 'startpos' (first position of CNV segment),
-#' 'endpos' (last position of CNV segment), 'nMajor' (Number of copies of the 
+#' 'endpos' (last position of CNV segment), 'nMajor' (Number of copies of the
 #' major allele) and 'nMinor' (Number of copies of the minor allele).
 #'
 #' The segments are attributed to each chromosome arm and split if necessary.
@@ -101,7 +101,7 @@ load_chas <- function(filename, kit.coverage) {
 #' number types (field \code{cntype}). \code{cntype} contains either 'Gain',
 #' 'Loss' or 'LOH'.
 #' If the file contains twice the same segment or does not respect the format
-#' specifications, then an error is raised. 
+#' specifications, then an error is raised.
 #' NB. If the chromosome name is in the format '1' and not 'chr1' and will
 #' be transformed if needed.
 #'
@@ -137,7 +137,7 @@ load_ascat <- function(filename, kit.coverage) {
         Type = cn.type[!is.na(cn.type)],
         check.names = FALSE
     )
-    
+
     # Add LOH segments (not necessary for nLST computation)
     segs.loh <- segs[(segs$nMajor == 0 | segs$nMinor == 0) & segs$cn > 1, ]
     if (dim(segs.loh)[1] > 0) {
@@ -147,13 +147,13 @@ load_ascat <- function(filename, kit.coverage) {
                              check.names = FALSE)
         segments_table <- rbind(segments_table, dt.loh)
     }
-    
-    
+
+
     segs <- GRanges()
     if(dim(segments_table)[1] > 0){
         # Process the data into GRanges segments
         segs <- process_chas(segments_table, kit.coverage)
-        
+
         # Test for duplicated entries
         errmsg <- paste("The file", filename, "contains duplicated entries.")
         for (arm in unique(seqnames(segs))) {
@@ -175,11 +175,11 @@ load_ascat <- function(filename, kit.coverage) {
             }
         }
     }
-    
+
     if (length(segs) == 0) {
         warning("No segments loaded!")
     }
-    
+
     segs$cn <- as.numeric(segs$cn)
     return(segs)
 }
@@ -231,7 +231,7 @@ process_chas <- function(oncoscan_table, kit.coverage){
         # Test if copy number type is correct
         if (!(seg_cntype %in% cntypes)) {
             msg <- paste("The column \"Type\" should contain only the",
-                         "following values:", paste(cntypes, collapse = ','), 
+                         "following values:", paste(cntypes, collapse = ','),
                          "whereas", seg_cntype, "was found!")
             stop(msg)
         }
@@ -548,7 +548,7 @@ adjust_loh <- function(segments) {
     if (length(loh.segs) == 0) {
         return(segments)  # Nothing to do if no LOH segments
     }
-    
+
     # Apply on each arm
     loh.adj <- lapply(unique(seqnames(loh.segs)), function(arm) {
         armsegs.loh <- loh.segs[seqnames(loh.segs) == arm]
@@ -584,7 +584,7 @@ adjust_loh <- function(segments) {
     })
 
     new.loh <- do.call("c", unlist(loh.adj))
-    if (length(new.loh) == 0) {
+    if (length(new.loh) != 0) {
         new.loh$cn <- as.numeric(NA)
         new.loh$cn.type <- as.character(cntypes$LOH)
         if (!is.null(segments$cn.subtype)) {
