@@ -1,7 +1,7 @@
 Package: oncoscanR
 Type: Package
 Title: Secondary analyses of CNV data (HRD and more)
-Version: 1.11.0
+Version: 1.11.1
 Authors@R: c(person("Yann", "Christinat", email = "yann.christinat@hcuge.ch", 
                   role = c("aut", "cre")),
              person("Geneva University Hospitals", role=c("aut", "cph")))
@@ -12,7 +12,7 @@ Description: The software uses the copy number segments from a text file and
     ThermoFisher Oncoscan assay analyzed with their Chromosome Alteration Suite 
     (ChAS) but can be adapted to any input.
 License: MIT + file LICENSE
-Date: 2022-06-14
+Date: 2025-06-27
 Encoding: UTF-8
 VignetteBuilder: knitr
 biocViews:
